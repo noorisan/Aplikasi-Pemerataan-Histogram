@@ -8,6 +8,7 @@ import javax.swing.filechooser.*;
  */
 public class ImageFilter extends FileFilter{
 
+    @Override
     public boolean accept(File file){
         boolean result = false;
         if(file.isDirectory()){

@@ -18,20 +18,18 @@ public class ImageHistogramExporter{
             ImageUnpacker imageUnpacker=new ImageUnpacker(bufferedImage);
 
             FileWriter fileWriter=new FileWriter(outputHistogramFile.getAbsolutePath());
-            BufferedWriter bufferedWriter=new BufferedWriter(fileWriter);
-
-            int[] histogramRed=getHistogramChannel(imageUnpacker.getRed(),cumulative);
-            int[] histogramGreen=getHistogramChannel(imageUnpacker.getGreen(),cumulative);
-            int[] histogramBlue=getHistogramChannel(imageUnpacker.getBlue(),cumulative);
-
-            bufferedWriter.write("Index Red Green Blue");
-            bufferedWriter.newLine();
-            for(int i=0;i<histogramRed.length;i++){
-                bufferedWriter.write(((Integer)i).toString()+" "+((Integer)histogramRed[i]).toString()+" "+((Integer)histogramGreen[i]).toString()+" "+((Integer)histogramBlue[i]).toString());
+            try (BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)) {
+                int[] histogramRed=getHistogramChannel(imageUnpacker.getRed(),cumulative);
+                int[] histogramGreen=getHistogramChannel(imageUnpacker.getGreen(),cumulative);
+                int[] histogramBlue=getHistogramChannel(imageUnpacker.getBlue(),cumulative);
+                
+                bufferedWriter.write("Index Red Green Blue");
                 bufferedWriter.newLine();
+                for(int i=0;i<histogramRed.length;i++){
+                    bufferedWriter.write(((Integer)i).toString()+" "+((Integer)histogramRed[i]).toString()+" "+((Integer)histogramGreen[i]).toString()+" "+((Integer)histogramBlue[i]).toString());
+                    bufferedWriter.newLine();
+                }
             }
-
-            bufferedWriter.close();
 
             System.out.println("IHE: image histogram exported");
         }catch (IOException e){	//Catch exception if any

@@ -171,7 +171,7 @@ public class GUI extends JFrame implements ActionListener{
                 System.out.println("GUI: no file chosen");
             }
             if(aE.getSource()==helpHM){
-                JOptionPane.showMessageDialog(null,"Langkah Dasar:\nImport Gambar [File>Import Gambar]\nPilih Operasi [Edit]\nSimpan Hasil Gambar [File>Export Gambar]","Help",JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null,"Langkah Dasar:\n1. Import Gambar [File>Import Gambar]\n2. Pilih Operasi [Edit]\n3. Simpan Hasil Gambar [File>Export Gambar]","Help",JOptionPane.INFORMATION_MESSAGE);
             }
             else if(aE.getSource()==creditHM){
                 JOptionPane.showMessageDialog(null,"Program ini dibuat oleh M. Noor Ihsan DBC 118 018","Tentang",JOptionPane.INFORMATION_MESSAGE);

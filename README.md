@@ -6,4 +6,4 @@ Project ini dibuat menggunakan bahasa pemrograman JAVA.
 
 Simulasi Program : https://user-images.githubusercontent.com/50009739/103157678-14b01180-47e8-11eb-8a88-112d5a0fa594.mp4
 
-silahkan clone/download aplikasi ini, file jar terdapat didalam folder "dist".
+silahkan clone/download aplikasi ini, file "jar" sudah terinclude didalam folder

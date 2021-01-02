@@ -11,11 +11,12 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 
 import Teknik.*;
+import ShowHisto.*;
 
 public class GUI extends JFrame implements ActionListener{
     JMenuBar menuBar;
     JMenu fileMenu,editMenu,helpMenu; //FM, EM & HM
-    JMenuItem importFM,exportFM,hEEM,helpHM,creditHM; //Suffix untuk menu
+    JMenuItem importFM,exportFM,hEEM,helpHM,creditHM,histo1,histo2; //Suffix untuk menu
     JFileChooser fileSelection;	//Memilih file/folder untuk membuka/menyimpan
     JLabel inputDisplay,outputDisplay,log; //Menampilkan sumber, hasil & detail operasi
     File inputFile,outputFile,outputHistogramFile; //IO
@@ -79,6 +80,8 @@ public class GUI extends JFrame implements ActionListener{
 
         log=new JLabel(" No file chosen");
         log.setBorder(BorderFactory.createLineBorder(Color.black));
+        
+        
 
         this.add(menuBar,BorderLayout.PAGE_START);		
         this.add(inputDisplay,BorderLayout.LINE_START); //input image disebelah kiri
@@ -87,7 +90,7 @@ public class GUI extends JFrame implements ActionListener{
 
         this.setVisible(true);
         this.setSize(1200,700);
-        this.setTitle("Aplikasi Pemerataan Histogram Oleh Isan DBC118018");
+        this.setTitle("Aplikasi Pemerataan Histogram");
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 
@@ -135,7 +138,10 @@ public class GUI extends JFrame implements ActionListener{
                 if(option==JFileChooser.APPROVE_OPTION){
                     inputFile=fileSelection.getSelectedFile();
                     BufferedImage inputBufferedImage=ImageIO.read(inputFile);
-                    this.setInputImage(inputBufferedImage,inputBufferedImage.getWidth(),inputBufferedImage.getHeight());					
+                    this.setInputImage(inputBufferedImage,inputBufferedImage.getWidth(),inputBufferedImage.getHeight());
+                    Histogram hs = new Histogram (inputBufferedImage);
+                    int[]data=hs.setHistogram();
+                    hs.openHist(data,"Sebelum Equalization");
                     log.setText(" File chosen: "+inputFile.getName());
                     try{
                         this.setOutputImage(null,0,0);
@@ -164,6 +170,9 @@ public class GUI extends JFrame implements ActionListener{
                     log.setText(" Histogram equalisation complete. Time taken: "+histogramEqualisation.operation(inputFile,0,0)+" seconds");
                     this.setOutputImage(histogramEqualisation.getBufferedImage(),histogramEqualisation.getWidth(),histogramEqualisation.getHeight());
                     output="HE";
+                    Histogram hs = new Histogram (histogramEqualisation.getBufferedImage());
+                    int[]data=hs.setHistogram();
+                    hs.openHist(data,"Sesudah Equalization");
                 }
             }
             else if(inputFile==null){
@@ -174,7 +183,7 @@ public class GUI extends JFrame implements ActionListener{
                 JOptionPane.showMessageDialog(null,"Langkah Dasar:\n1. Import Gambar [File>Import Gambar]\n2. Pilih Operasi [Edit]\n3. Simpan Hasil Gambar [File>Export Gambar]","Help",JOptionPane.INFORMATION_MESSAGE);
             }
             else if(aE.getSource()==creditHM){
-                JOptionPane.showMessageDialog(null,"Program ini dibuat oleh M. Noor Ihsan DBC 118 018","Tentang",JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null,"Program ini dibuat oleh \nIhsan \nZulfani \nYobel \nRutmeida \nElsa","Tentang",JOptionPane.INFORMATION_MESSAGE);
             }
         }
         catch(IOException iOE){

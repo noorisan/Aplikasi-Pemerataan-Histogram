@@ -2,8 +2,6 @@ package ShowHisto;
 
 import java.awt.Color;
 import java.awt.image.BufferedImage;
-import javax.imageio.ImageIO;
-import java.io.File;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartFrame;
 import org.jfree.chart.JFreeChart;

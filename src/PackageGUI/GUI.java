@@ -55,7 +55,7 @@ public class GUI extends JFrame implements ActionListener{
         fileMenu.add(importFM);
         fileMenu.add(exportFM);
 
-        hEEM=new JMenuItem("Histogram equalisation [HE]");
+        hEEM=new JMenuItem("Histogram Equalization [HE]");
         hEEM.addActionListener(this);
         editMenu=new JMenu("Edit");
         editMenu.add(hEEM);
@@ -90,7 +90,7 @@ public class GUI extends JFrame implements ActionListener{
 
         this.setVisible(true);
         this.setSize(1200,700);
-        this.setTitle("Aplikasi Pemerataan Histogram");
+        this.setTitle("Aplikasi Pemerataan Histogram (Histogram Equalization)");
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 
@@ -183,7 +183,7 @@ public class GUI extends JFrame implements ActionListener{
                 JOptionPane.showMessageDialog(null,"Langkah Dasar:\n1. Import Gambar [File>Import Gambar]\n2. Pilih Operasi [Edit]\n3. Simpan Hasil Gambar [File>Export Gambar]","Help",JOptionPane.INFORMATION_MESSAGE);
             }
             else if(aE.getSource()==creditHM){
-                JOptionPane.showMessageDialog(null,"Program ini dibuat oleh \nIhsan \nZulfani \nYobel \nRutmeida \nElsa","Tentang",JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null,"Program ini dibuat oleh :\n1. Muhammad Noor Ihsan DBC118018\n2. Muhammad Zulfani DBC118022\n3. Yobela Anjelika DBC118014\n4. Rutmeida Handayani Akar DBC118001\n5. Elsa Yosepha DBC118026","Tentang",JOptionPane.INFORMATION_MESSAGE);
             }
         }
         catch(IOException iOE){

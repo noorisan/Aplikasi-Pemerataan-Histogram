@@ -64,7 +64,7 @@ public class HistogramEqualization implements Technique{
             cumulativeHistogramGreen[i]=cumulativeHistogramGreen[i-1]+histogramGreen[i];
             cumulativeHistogramBlue[i]=cumulativeHistogramBlue[i-1]+histogramBlue[i];
         }
-        temp=255/(float)(imageY*imageX); //Constant, sangat dihitung sebelumnya
+        temp=255/(float)(imageY*imageX); //Constant, dihitung sebelumnya
 
         for(int currentY=0;currentY<imageY;currentY++){	//Equalizing
             for(int currentX=0;currentX<imageX;currentX++){
